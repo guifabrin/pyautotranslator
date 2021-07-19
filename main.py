@@ -59,7 +59,7 @@ audio_source = AudioSource(q, True, True)
 ###############################################
 
 # initialize speech to text service
-authenticator = IAMAuthenticator('')
+authenticator = IAMAuthenticator('your_api_key')
 speech_to_text = SpeechToTextV1(authenticator=authenticator)
 
 
@@ -88,7 +88,7 @@ class MyRecognizeCallback(RecognizeCallback):
         h = hypothesis.replace('%HESITATION', '')
         captured_text.set(h)
 
-        t = threading.Thread(target=translate, args=("Thread-1", h,))
+        t = threading.Thread(target=translate, args=(h,))
         t.start()
 
 
